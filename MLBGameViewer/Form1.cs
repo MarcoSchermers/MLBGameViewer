@@ -25,32 +25,19 @@ namespace MLBGameViewer
         public Schedule SelectedSchedule { get => selectedSchedule; set => selectedSchedule = value; }
 
         private void initForm_Load(object sender, EventArgs e)
-        {
-            APIKEY = "97qg4ep2vwwhhax3bmy24rfn";
+        { 
         }
 
         private void btnSearch_Click(object sender, EventArgs e)
         {
+            games.gamesDate = gamesDateSelect.Value;
 
 
-            trial = rbtnTrial.Checked;
-            games.gamesDate = gamesDateSelect.Value.Date.ToString("yyyy/MM/dd");
-            if (rbtnTrial.Checked)
-            {
-                games.accessLevel = "t";
-            } else
-            {
-                games.accessLevel = "p";
-            }
-            
-            //games.APIKEY = txtAPIKEY.Text;
-            games.APIKEY = APIKEY;
             SelectedSchedule = games.Request();
 
 
 
-            MainForm mainForm = new MainForm();
-            mainForm.Show(this);
+            new MainForm().Show(this);
 
 
             this.Hide();

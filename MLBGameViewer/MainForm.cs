@@ -32,35 +32,25 @@ namespace MLBGameViewer
         {
 
 
-            games = ((initForm)Owner).SelectedSchedule.games;
+            games = ((initForm)Owner).SelectedSchedule.dates[0].games;
             
-            for (int i = 0; i < ((initForm)this.Owner).SelectedSchedule.games.Count; i++)
+            for (int i = 0; i < ((initForm)this.Owner).SelectedSchedule.dates[0].games.Count; i++)
             {
-                gameList.Rows.Insert(i, games[i].away.name, games[i].home.name);
+                gameList.Rows.Insert(i, games[i].teams.away.team.name, games[i].teams.home.team.name);
             }
             
         }
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            Console.WriteLine(games[gameList.CurrentRow.Index].id);
+            Console.WriteLine(games[gameList.CurrentRow.Index].gamePk);
             Console.WriteLine("kappa");
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
 
-            if (((initForm)Owner).trial)
-            {
-                r.accessLevel = "t";
-            }
-            else {
-                r.accessLevel = "p";
-            }
-
-            r.APIKEY = ((initForm)Owner).APIKEY;
-
-            r.gameId = games[gameList.CurrentRow.Index].id;
+            r.gameId = games[gameList.CurrentRow.Index].gamePk;
             requestedGame = r.getGame();
 
             GameView gameViewer = new GameView();
@@ -68,7 +58,12 @@ namespace MLBGameViewer
 
             this.Hide();
 
-            Console.WriteLine(games[gameList.CurrentRow.Index].id);
+            Console.WriteLine(games[gameList.CurrentRow.Index].gamePk);
+        }
+
+        private void gameList_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
     }
 }

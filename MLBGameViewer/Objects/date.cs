@@ -2,10 +2,9 @@
 
 namespace MLBGameViewer
 {
-    public class Schedule
+    public class Date
     {
         public int totalGames { get; set; }
-        public List<Date> dates { get; set; }
+        public List<Game> games { get; set; }
     }
-
 }

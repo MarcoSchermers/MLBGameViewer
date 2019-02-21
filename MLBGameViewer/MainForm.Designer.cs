@@ -78,6 +78,7 @@
             this.gameList.Size = new System.Drawing.Size(1240, 657);
             this.gameList.TabIndex = 0;
             this.gameList.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
+            this.gameList.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.gameList_CellContentClick);
             // 
             // colAway
             // 

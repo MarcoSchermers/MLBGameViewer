@@ -21,7 +21,7 @@ namespace MLBGameViewer
         private String playerName = "{0} {1}";
         private List<Player> awayLineup = new List<Player>();
         private List<Player> homeLineup = new List<Player>();
-        private String[] runs = new String[MainForm.requestedGame.game.away.scoring.Count];
+        private String[] runs = new String[MainForm.requestedGame.game.teams.away.scoring.Count];
 
         /// <summary>
         /// add given team's data to given row index
@@ -76,32 +76,32 @@ namespace MLBGameViewer
         private void GameView_Load(object sender, EventArgs e)
         {
             //get away team name and set label
-            awayTeamLbl.Text = MainForm.requestedGame.game.away.name;
+            //awayTeamLbl.Text = MainForm.requestedGame.game.away.name;
 
             //add each team's row to linescore
-            dataLineScore.Rows.Add(MainForm.requestedGame.game.away.name);
-            dataLineScore.Rows.Add(MainForm.requestedGame.game.home.name);
+//            dataLineScore.Rows.Add(MainForm.requestedGame.game.away.name);
+  //          dataLineScore.Rows.Add(MainForm.requestedGame.game.home.name);
 
             //add each team's data to line score
-            populateLineScore(MainForm.requestedGame.game.away,0);
-            populateLineScore(MainForm.requestedGame.game.home,1);
+    //        populateLineScore(MainForm.requestedGame.game.away,0);
+      //      populateLineScore(MainForm.requestedGame.game.home,1);
 
             //get home team's name and set label
-            homeTeamLbl.Text = MainForm.requestedGame.game.home.name;
+        //    homeTeamLbl.Text = MainForm.requestedGame.game.home.name;
 
             //changing position of label based on length of name
             homeTeamLbl.Location = new Point(panelTitle.Size.Width - homeTeamLbl.Size.Width - 3, 18);
 
             //get lineup for game and add it to respective lineup dataGrid
-            populateLineup(MainForm.requestedGame.game.away, dataAwayLineup);
-            populateLineup(MainForm.requestedGame.game.home, dataHomeLineup);
+          //  populateLineup(MainForm.requestedGame.game.away, dataAwayLineup);
+            //populateLineup(MainForm.requestedGame.game.home, dataHomeLineup);
 
             //set height of data grid view to be fluch with data
             dataLineScore.Size = new Size(dataLineScore.Size.Width, 2 * dataLineScore.Rows[0].Height + dataLineScore.ColumnHeadersHeight);
 
             //sorted lineup lists
-            awayLineup = MainForm.requestedGame.game.away.lineup.OrderBy(p => p.order).ToList<Player>();
-            homeLineup = MainForm.requestedGame.game.home.lineup.OrderBy(p => p.order).ToList<Player>();
+            //awayLineup = MainForm.requestedGame.game.away.lineup.OrderBy(p => p.order).ToList<Player>();
+            //homeLineup = MainForm.requestedGame.game.home.lineup.OrderBy(p => p.order).ToList<Player>();
 
         }
 

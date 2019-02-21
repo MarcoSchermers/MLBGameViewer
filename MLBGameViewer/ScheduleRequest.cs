@@ -11,17 +11,17 @@ namespace MLBGameViewer
 {
     class ScheduleRequest
     {
-        public static String baseUrl = "https://api.sportradar.us/mlb-{0}6/games/{1}/schedule.json?api_key={2}";
+        public static String baseUrl = "http://statsapi.mlb.com/api/v1/schedule/games/?sportId=1&date={0}";
 
         public string APIKEY { get; set; }
         public string accessLevel { get; set; }
-        public string gamesDate { get; set; }
+        public DateTime gamesDate { get; set; }
 
         public static string requestUrl;
 
         public Schedule Request()
         {
-            requestUrl = String.Format(baseUrl, accessLevel, gamesDate, APIKEY);
+            requestUrl = String.Format(baseUrl, gamesDate.ToString("d"));
             WebRequest r;
             r = WebRequest.Create(requestUrl);
 
@@ -30,6 +30,7 @@ namespace MLBGameViewer
             StreamReader sreader = new StreamReader(responseStream);
             var result = sreader.ReadToEnd();
 
+            Schedule sched = JsonConvert.DeserializeObject<Schedule>(result);
             return JsonConvert.DeserializeObject<Schedule>(result);
             Console.WriteLine("kappa");
         }
