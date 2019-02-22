@@ -18,11 +18,8 @@ namespace MLBGameViewer
         }
 
         private ScheduleRequest games = new ScheduleRequest();
-        private Schedule selectedSchedule;
-        public bool trial;
-        public string APIKEY;
-
-        public Schedule SelectedSchedule { get => selectedSchedule; set => selectedSchedule = value; }
+        
+        public dynamic SelectedSchedule { get; set; }
 
         private void initForm_Load(object sender, EventArgs e)
         { 
@@ -31,15 +28,9 @@ namespace MLBGameViewer
         private void btnSearch_Click(object sender, EventArgs e)
         {
             games.gamesDate = gamesDateSelect.Value;
-
-
             SelectedSchedule = games.Request();
-
-
-
+            
             new MainForm().Show(this);
-
-
             this.Hide();
 
             Console.WriteLine("kappa");

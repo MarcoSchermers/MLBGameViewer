@@ -62,16 +62,6 @@
     <Compile Include="GameView.Designer.cs">
       <DependentUpon>GameView.cs</DependentUpon>
     </Compile>
-    <Compile Include="Objects\date.cs" />
-    <Compile Include="Objects\Game.cs" />
-    <Compile Include="Objects\gameSatus.cs" />
-    <Compile Include="Objects\Inning.cs" />
-    <Compile Include="Objects\leagueRecord.cs" />
-    <Compile Include="Objects\Lineup.cs" />
-    <Compile Include="Objects\miniTeam.cs" />
-    <Compile Include="Objects\Pitcher.cs" />
-    <Compile Include="Objects\Player.cs" />
-    <Compile Include="Objects\scheduleTeam.cs" />
     <Compile Include="Objects\selectedGame.cs" />
     <Compile Include="Objects\Stats\fielding\errorStats.cs" />
     <Compile Include="Objects\Stats\FieldingStats.cs" />
@@ -87,7 +77,6 @@
     <Compile Include="Objects\Stats\pitching\pitchStats.cs" />
     <Compile Include="Objects\Stats\PlayerStats.cs" />
     <Compile Include="Objects\Stats\hitting\runStats.cs" />
-    <Compile Include="Objects\teamSet.cs" />
     <Compile Include="PlayerStatsView.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -95,7 +84,6 @@
       <DependentUpon>PlayerStatsView.cs</DependentUpon>
     </Compile>
     <Compile Include="ScheduleRequest.cs" />
-    <Compile Include="Objects\league.cs" />
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -104,10 +92,7 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Objects\Schedule.cs" />
-    <Compile Include="Objects\team.cs" />
     <Compile Include="Teams.cs" />
-    <Compile Include="Objects\venue.cs" />
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>

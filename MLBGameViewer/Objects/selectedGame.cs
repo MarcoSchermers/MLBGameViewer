@@ -8,6 +8,13 @@ namespace MLBGameViewer.Objects
 {
     public class selectedGame
     {
-        public Game game { get; set; }
+        public dynamic boxScore { get; set; }
+        public dynamic lineScore { get; set; }
+
+        public selectedGame(dynamic box, dynamic line)
+        {
+            this.boxScore = box;
+            this.lineScore = line;
+        }
     }
 }

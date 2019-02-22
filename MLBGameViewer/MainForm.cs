@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using MLBGameViewer.Objects;
+using Newtonsoft.Json.Linq;
 
 namespace MLBGameViewer
 {
@@ -22,8 +23,7 @@ namespace MLBGameViewer
         {
             Application.Exit();
         }
-        private List<Game> games;
-
+        private dynamic games;
         private GameRequest r = new GameRequest();
 
         public static selectedGame requestedGame;
@@ -34,7 +34,7 @@ namespace MLBGameViewer
 
             games = ((initForm)Owner).SelectedSchedule.dates[0].games;
             
-            for (int i = 0; i < ((initForm)this.Owner).SelectedSchedule.dates[0].games.Count; i++)
+            for (int i = 0; i < games.Count; i++)
             {
                 gameList.Rows.Insert(i, games[i].teams.away.team.name, games[i].teams.home.team.name);
             }

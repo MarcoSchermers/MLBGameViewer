@@ -7,12 +7,13 @@ using System.Net;
 using System.IO;
 using Newtonsoft.Json;
 using MLBGameViewer.Objects;
+using Newtonsoft.Json.Linq;
 
 namespace MLBGameViewer
 {
     class GameRequest
     {
-        public static string baseUrl = "https://api.sportradar.us/mlb-{0}6/games/{1}/summary.json?api_key={2}";
+        public static string baseUrl = "https://statsapi.mlb.com/api/v1/game/{0}/{1}";
 
         public string APIKEY { get; set; }
         public string accessLevel { get; set; }
@@ -20,8 +21,9 @@ namespace MLBGameViewer
 
         public string requestUrl;
 
-        public selectedGame getGame() {
-            requestUrl = String.Format(baseUrl, accessLevel, gameId, APIKEY);
+
+        public dynamic getBox() {
+            requestUrl = String.Format(baseUrl, gameId, "boxscore");
             WebRequest r;
             r = WebRequest.Create(requestUrl);
 
@@ -30,7 +32,24 @@ namespace MLBGameViewer
             StreamReader sreader = new StreamReader(responseStream);
             var result = sreader.ReadToEnd();
 
-            return JsonConvert.DeserializeObject<selectedGame>(result);
+            return JObject.Parse(result);
+        }
+        public dynamic getLine()
+        {
+            requestUrl = String.Format(baseUrl, gameId, "linescore");
+            WebRequest r;
+            r = WebRequest.Create(requestUrl);
+
+            Stream responseStream = r.GetResponse().GetResponseStream();
+
+            StreamReader sreader = new StreamReader(responseStream);
+            var result = sreader.ReadToEnd();
+
+            return JObject.Parse(result);
+        }
+        public selectedGame getGame()
+        {
+            return new selectedGame(getBox(), getLine());
         }
     }
 }
